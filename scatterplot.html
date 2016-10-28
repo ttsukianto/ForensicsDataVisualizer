@@ -38,13 +38,15 @@ body {
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = 150 - margin.top - margin.bottom;
 
 
 //Sets scales
 var x = d3.scale.linear()
     .range([0, width]);
 
+var x2 = d3.scale.linear()
+    .range([0, width]);
 
 var color = d3.scale.category10();
 
@@ -52,6 +54,10 @@ var color = d3.scale.category10();
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
+
+var x2Axis = d3.svg.axis()
+    .scale(x2)
+    .orient("top");
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -76,6 +82,7 @@ var svg = d3.select("body").append("svg")
 
 //Set domains
   x.domain([0,100]).nice();
+  x2.domain([100,0]).nice();
 
 //add x axis
   svg.append("g")
@@ -85,10 +92,23 @@ var svg = d3.select("body").append("svg")
     //x axis label
     .append("text")
       .attr("class", "label")
-      .attr("x", width)
+      .attr("x", 0)
       .attr("y", -6)
-      .style("text-anchor", "end")
+      .style("text-anchor", "start")
       .text("Male");
+
+  svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + 10 + ")")
+          .call(x2Axis)
+        //x axis label
+        .append("text")
+          .attr("class", "label")
+          .attr("x", 0)
+          .attr("y", 12)
+          .style("text-anchor", "start")
+          .text("Female");
+
 
   svg.append("text")
     .attr("class", "label")
@@ -108,7 +128,7 @@ var svg = d3.select("body").append("svg")
       .attr("r", 3.5)
       //Parses x value from the data
       .attr("cx", function(d) { return x(d.suspectMaleProbability); })
-      .attr("cy", 90)
+      .attr("cy", 50)
       //Chooses color based on data category
       .style("fill", function(d) { return color(d.suspect); })
       .each(function() {
