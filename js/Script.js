@@ -68,28 +68,28 @@ RadarChart.draw("#chart", d, mycfg);
 /////////// Initiate legend ////////////////
 ////////////////////////////////////////////
 
-var svg = d3.select('#body')
+var svg = d3.select('#chart')
 	.selectAll('svg')
 	.append('svg')
 	.attr("width", w+300)
-	.attr("height", h)
+	.attr("height", h);
 
 //Create the title for the legend
 var text = svg.append("text")
 	.attr("class", "title")
-	.attr('transform', 'translate(110,0)') 
+	.attr('transform', 'translate(110,0)')
 	.attr("x", w - 70)
 	.attr("y", 10)
 	.attr("font-size", "24px")
 	.attr("fill", "#404040")
 	.text("Suspects");
-		
-//Initiate Legend	
+
+//Initiate Legend
 var legend = svg.append("g")
 	.attr("class", "legend")
 	.attr("height", 100)
 	.attr("width", 200)
-	.attr('transform', 'translate(90,20)') 
+	.attr('transform', 'translate(90,20)')
 	;
 	//Create colour squares
 	legend.selectAll('rect')
@@ -112,4 +112,4 @@ var legend = svg.append("g")
 	  .attr("font-size", "11px")
 	  .attr("fill", "#737373")
 	  .text(function(d) { return d; })
-	  ;	
+	  ;

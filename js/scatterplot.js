@@ -1,43 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-  <meta charset="utf-8">
-  <title>Scatterplot</title>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-
-
-</head>
-
-<style>
-
-body {
-  font: 10px sans-serif;
-
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.dot {
-  stroke: #000;
-}
-
-</style>
-
-<body>
-
-<script>
 //based on Mike Bostock's d3 Scatterplot Example
 //https://bl.ocks.org/mbostock/3887118
 
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 150 - margin.top - margin.bottom;
 
 
@@ -66,7 +32,8 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.xml("data2.xml", function(error, data) {
+//Change "scatterplot.xml" to the XML file you want to parse
+    d3.xml("sample data/scatterplot.xml", function(error, data) {
       if (error) throw error;
       data = [].map.call(data.querySelectorAll("suspect"), function(suspect) {
         return {
@@ -74,7 +41,6 @@ var svg = d3.select("body").append("svg")
           suspectMaleProbability: +suspect.querySelector("suspectMaleProbability").textContent
         }
       });
-
       //loop running through each data value
         data.forEach(function(d) {
           d.suspectMaleProbability = +d.suspectMaleProbability;
@@ -110,14 +76,6 @@ var svg = d3.select("body").append("svg")
           .text("Female");
 
 
-  svg.append("text")
-    .attr("class", "label")
-    .attr("x", 0)
-    .attr("y", 195)
-    .style("text-anchor", "start")
-    .text("Female");
-
-
 //Scatterplot dots
   svg.selectAll(".dot")
       .data(data)
@@ -145,9 +103,3 @@ var svg = d3.select("body").append("svg")
             });
       });
     });
-
-
-</script>
-
-</body>
-</html>
