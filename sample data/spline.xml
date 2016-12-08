@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <suspect id="Suspect A">
+        <age>10</age>
+        <probability>10</probability>
+    </suspect>
+    <suspect id="Suspect A">
+        <age>37</age>
+        <probability>20</probability>
+    </suspect>
+    <suspect id="Suspect A">
+        <age>67</age>
+        <probability>55</probability>
+    </suspect>
+    <suspect id="Suspect A">
+        <age>80</age>
+        <probability>10</probability>
+    </suspect>
+    <suspect id="Suspect A">
+        <age>95</age>
+        <probability>5</probability>
+    </suspect>
+</data>
