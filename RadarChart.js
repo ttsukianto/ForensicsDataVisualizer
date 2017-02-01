@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Practically all this code comes from https://github.com/alangrafu/radar-chart-d3
 //I only made some additions and aesthetic adjustments to make the chart look better 
 //(of course, that is only my point of view)
@@ -258,4 +259,3 @@ d.forEach(function(y, x){
 	.style('font-family', 'sans-serif')
 	.style('font-size', '13px');
 }
-};

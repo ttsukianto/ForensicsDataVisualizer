@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var w = 500,
 h = 500;
 var d = [
@@ -149,4 +150,3 @@ var count = -1;
 	.attr("font-size", "11px")
 	.attr("fill", "#737373")
 	.text(function(d) { return d; })
-	;
