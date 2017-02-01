@@ -33,13 +33,14 @@ d3.xml("sample data/spline.xml", function(error, data) {
     data = [].map.call(data.querySelectorAll("suspect"), function(suspect) {
         return {
             suspect: suspect.getAttribute("id"),
-            age: +suspect.querySelector("age").textContent,
-            probability: +suspect.querySelector("probability").textContent
+            ageProbability: +suspect.querySelector("ageProbability").textContent,
         }
 
     });
 
-    var svg = d3.select("body").append("svg")
+
+
+    var splineSVG = d3.select("#spline").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("style", "outline: solid black;")
@@ -53,7 +54,7 @@ d3.xml("sample data/spline.xml", function(error, data) {
     y.domain([0, 100]).nice();
 
     //add x axis
-    svg.append("g")
+    splineSVG.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
@@ -65,7 +66,7 @@ d3.xml("sample data/spline.xml", function(error, data) {
         .style("text-anchor", "end")
         .text("Age (years)");
 
-    svg.append("g")
+    splineSVG.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         //x axis label
@@ -77,32 +78,24 @@ d3.xml("sample data/spline.xml", function(error, data) {
         .text("Probability (%)");
 
 
-    var line = d3.svg.line()
-        .x(function(d) {
-            return x(d.age);
-        })
-        .y(function(d) {
-            return y(d.probability);
-        })
-        .interpolate("cardinal");
-
-    svg.append("path")
-        .data(data)
-        .attr("d", line(data))
-        .style("stroke", function(d) { return color(d.suspect);})
-        .attr("fill", "none")
-        .attr("stroke-width", 2)
-        .each(function() {
-            var sel = d3.select(this);
-            var state = false;
-            sel.on('click', function() {
-                state = !state;
-                if (state) {
-                    sel.style('stroke', 'gray');
-                } else {
-                    sel.style("stroke", function(d) { return color(d.suspect);});
-                }
+      splineSVG.append("path")
+          .data(data)
+          .attr('d', d3.svg.line().interpolate('cardinal'))
+          .attr("class", "line")
+          .style("stroke", function(d) { return color(d.suspect);})
+          .attr("fill", "none")
+          .attr("stroke-width", 2)
+          .each(function() {
+              var sel = d3.select(this);
+              var state = false;
+              sel.on('click', function() {
+                  state = !state;
+                  if (state) {
+                      sel.style('stroke', 'gray');
+                  } else {
+                      sel.style("stroke", function(d) { return color(d.suspect);});
+                  }
+              });
             });
-          });
 
 });

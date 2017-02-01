@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data>
     <suspect id="Suspect A">
-        <age>10</age>
-        <probability>10</probability>
+        <ageProbability>10,10</ageProbability>
+        <ageProbability>37,20</ageProbability>
+        <ageProbability>67,55</ageProbability>
+        <ageProbability>80,10</ageProbability>
+        <ageProbability>95,5</ageProbability>
     </suspect>
-    <suspect id="Suspect A">
-        <age>37</age>
-        <probability>20</probability>
-    </suspect>
-    <suspect id="Suspect A">
-        <age>67</age>
-        <probability>55</probability>
-    </suspect>
-    <suspect id="Suspect A">
-        <age>80</age>
-        <probability>10</probability>
-    </suspect>
-    <suspect id="Suspect A">
-        <age>95</age>
-        <probability>5</probability>
-    </suspect>
-</data>
