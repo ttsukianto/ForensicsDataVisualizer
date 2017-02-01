@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--'values should not surpass 1 and are treated as percentages. ex: 1 is 100% and .37 is 37%'-->
+<suspects>
+    <element id='Hand Writing'><value>.01</value></element>
+    <element id='Looks Like'><value>.02</value></element>
+    <element id='The A looks the same'><value>.03</value></element>
+    <element id='Hand Writing'><value>.04</value></element>
+    <element id='Looks Like'><value>.05</value></element>
+    <element id='The A looks the same'><value>.06</value></element>
+    <element id='Hand Writing'><value>.95</value></element>
+    <element id='Looks Like'><value>.08</value></element>
+    <element id='The A looks the same'><value>.09</value></element>
+    <element id='Hand Writing'><value>.10</value></element>
+    <element id='Looks Like'><value>.11</value></element>
+    <element id='The A looks the same'><value>.12</value></element>
+    <Names><name>Harold</name></Names>
+    <Names><name>Susan</name></Names>
+    <Names><name>Amber</name></Names>
+    <Names><name>Colton</name></Names>
+</suspects>

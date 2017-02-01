@@ -1,146 +1,82 @@
 var w = 500,
-	h = 500;
+h = 500;
+var d = [
+[
+			{axis:"Email",value:0.59},
+			{axis:"Social Networks",value:0.56},
+			{axis:"Internet Banking",value:0.42},
+			{axis:"News Sportsites",value:0.34},
+			{axis:"Search Engine",value:0.48},
+			{axis:"View Shopping sites",value:0.14},
+			{axis:"Paying Online",value:0.11},
+			{axis:"Buy Online",value:0.05},
+			{axis:"Stream Music",value:0.07},
+			{axis:"Online Gaming",value:0.12},
+			{axis:"Navigation",value:0.27},
+			{axis:"App connected to TV program",value:0.03},
+			{axis:"Offline Gaming",value:0.12},
+			{axis:"Photo Video",value:0.4}
+			],[
+			{axis:"Email",value:0.59},
+			{axis:"Social Networks",value:0.56},
+			{axis:"Internet Banking",value:0.42},
+			{axis:"News Sportsites",value:0.34},
+			{axis:"Search Engine",value:0.48},
+			{axis:"View Shopping sites",value:0.14},
+			{axis:"Paying Online",value:0.11},
+			{axis:"Buy Online",value:0.05},
+			{axis:"Stream Music",value:0.07},
+			{axis:"Online Gaming",value:0.12},
+			{axis:"Navigation",value:0.27},
+			{axis:"App connected to TV program",value:0.03},
+			{axis:"Offline Gaming",value:0.12},
+			{axis:"Photo Video",value:0.4}
+
+			],[
+			{axis:"Email",value:0.59},
+			{axis:"Social Networks",value:0.56},
+			{axis:"Internet Banking",value:0.42},
+			{axis:"News Sportsites",value:0.34},
+			{axis:"Search Engine",value:0.48},
+			{axis:"View Shopping sites",value:0.14},
+			{axis:"Paying Online",value:0.11},
+			{axis:"Buy Online",value:0.05},
+			{axis:"Stream Music",value:0.07},
+			{axis:"Online Gaming",value:0.12},
+			{axis:"Navigation",value:0.27},
+			{axis:"App connected to TV program",value:0.03},
+			{axis:"Offline Gaming",value:0.12},
+			{axis:"Photo Video",value:0.4}
+			],[
+			{axis:"Email",value:0.59},
+			{axis:"Social Networks",value:0.56},
+			{axis:"Internet Banking",value:0.42},
+			{axis:"News Sportsites",value:0.34},
+			{axis:"Search Engine",value:0.48},
+			{axis:"View Shopping sites",value:0.14},
+			{axis:"Paying Online",value:0.11},
+			{axis:"Buy Online",value:0.05},
+			{axis:"Stream Music",value:0.07},
+			{axis:"Online Gaming",value:0.12},
+			{axis:"Navigation",value:0.27},
+			{axis:"App connected to TV program",value:0.03},
+			{axis:"Offline Gaming",value:0.12},
+			{axis:"Photo Video",value:0.4}
+			]
+
+];
+
+var LegendOptions = [];
 
 var colorscale = d3.scale.category10();
 
-//Legend titles
-var LegendOptions = [];
-//Data
-var d = [
-		  [
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4},
-			{axis:"Reading",value:0.03},
-			{axis:"Listen Music",value:0.22},
-			{axis:"Watch TV",value:0.03},
-			{axis:"TV Movies Streaming",value:0.03},
-			{axis:"Listen Radio",value:0.07},
-			{axis:"Sending Money",value:0.18},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.08}
-		  ],[
-			{axis:"Email",value:0.48},
-			{axis:"Social Networks",value:0.41},
-			{axis:"Internet Banking",value:0.27},
-			{axis:"News Sportsites",value:0.28},
-			{axis:"Search Engine",value:0.46},
-			{axis:"View Shopping sites",value:0.29},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.14},
-			{axis:"Stream Music",value:0.05},
-			{axis:"Online Gaming",value:0.19},
-			{axis:"Navigation",value:0.14},
-			{axis:"App connected to TV program",value:0.06},
-			{axis:"Offline Gaming",value:0.24},
-			{axis:"Photo Video",value:0.17},
-			{axis:"Reading",value:0.15},
-			{axis:"Listen Music",value:0.12},
-			{axis:"Watch TV",value:0.1},
-			{axis:"TV Movies Streaming",value:0.14},
-			{axis:"Listen Radio",value:0.06},
-			{axis:"Sending Money",value:0.16},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.17}
-		  ],[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4},
-			{axis:"Reading",value:0.03},
-			{axis:"Listen Music",value:0.22},
-			{axis:"Watch TV",value:0.03},
-			{axis:"TV Movies Streaming",value:0.03},
-			{axis:"Listen Radio",value:0.07},
-			{axis:"Sending Money",value:0.18},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.08}
-		  ],[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4},
-			{axis:"Reading",value:0.03},
-			{axis:"Listen Music",value:0.22},
-			{axis:"Watch TV",value:0.03},
-			{axis:"TV Movies Streaming",value:0.03},
-			{axis:"Listen Radio",value:0.07},
-			{axis:"Sending Money",value:0.18},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.08}
-		  ]
-		];
-		
-	function myFunction() {
-	var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", "data.xml", true);
-		xhttp.send();
-		var xmlDoc = this.responseXML;
-		xhttp.onload = function () {
-		//get the XML data
-		var temp = {};
-		var str;
-		var xmlDoc = this.responseXML;
-		var peopleNames = xmlDoc.getElementsByTagName("name");
-		var elementNames = xmlDoc.getElementsByTagName("element");
-		var valueNames = xmlDoc.getElementsByTagName("value");
-		// get an array of names
-		for (var i = 0; i < peopleNames.length; i++) {
-			LegendOptions[i] = peopleNames[i].childNodes[0].nodeValue;
-		}
-				str = '{axis:"' + elementNames[0].childNodes[0].nodeValue + '",value:' + valueNames[0].childNodes[0].nodeValue + '}';
-				temp = JSON.parse(str);
-	}
-
-    var langDiv = document.getElementById("langDiv");
-    var html;
-    html = "<form id='suspectForm'>";
-    for (var i = 0; i < LegendOptions.length; i++) {
-        html += "<input type='checkbox' name='suspect' value='" + i + "' onClick=\"setValue(this.value);\">" + LegendOptions[i] + "</input>";
-    }
-    html += "</form>";
-    langDiv.innerHTML = html;
-}
- 
-myFunction();
 //Options for the Radar chart, other than default
 var mycfg = {
-  w: w,
-  h: h,
-  maxValue: 1,
-  levels: 10,
-  ExtraWidthX: 300
+	w: w,
+	h: h,
+	maxValue: 1,
+	levels: 10,
+	ExtraWidthX: 300
 }
 
 //Call function to draw the Radar chart
@@ -152,47 +88,65 @@ RadarChart.draw("#chart", d, mycfg);
 ////////////////////////////////////////////
 
 var svg = d3.select('#body')
-	.selectAll('svg')
-	.append('svg')
-	.attr("width", w+300)
-	.attr("height", h)
+.selectAll('svg')
+.append('svg')
+.attr("width", w+300)
+.attr("height", h)
 
 //Create the title for the legend
 var text = svg.append("text")
-	.attr("class", "title")
-	.attr('transform', 'translate(90,0)') 
-	.attr("x", w - 70)
-	.attr("y", 10)
-	.attr("font-size", "12px")
-	.attr("fill", "#404040")
-	.text("Suspects");
-		
+.attr("class", "title")
+.attr('transform', 'translate(90,0)') 
+.attr("x", w - 70)
+.attr("y", 10)
+.attr("font-size", "12px")
+.attr("fill", "#404040")
+.text("Suspects");
+
 //Initiate Legend	
 var legend = svg.append("g")
-	.attr("class", "legend")
-	.attr("height", 200)
-	.attr("width", 300)
-	.attr('transform', 'translate(90,20)') 
-	;
+.attr("class", "legend")
+.attr("height", 200)
+.attr("width", 300)
+.attr('transform', 'translate(90,20)') 
+;
+var count = -1;
 	//Create colour squares
 	legend.selectAll('rect')
-	  .data(LegendOptions)
-	  .enter()
-	  .append("rect")
-	  .attr("x", w - 65)
-	  .attr("y", function(d, i){ return i * 20;})
-	  .attr("width", 10)
-	  .attr("height", 10)
-	  .style("fill", function(d, i){ return colorscale(i);})
-	  ;
+	.data(LegendOptions)
+	.enter()
+	.append("rect")
+	.attr("id",function(){
+		count++;
+		return 'colour' + count;
+	})
+	.attr("x", w - 65)
+	.attr("y", function(d, i){ return i * 20;})
+	.attr("width", 10)
+	.attr("height", 10)
+	.style("fill", function(d, i){ return colorscale(i);})
+	;
+	count = -1;
 	//Create text next to squares
 	legend.selectAll('text')
-	  .data(LegendOptions)
-	  .enter()
-	  .append("text")
-	  .attr("x", w - 52)
-	  .attr("y", function(d, i){ return i * 20 + 9;})
-	  .attr("font-size", "11px")
-	  .attr("fill", "#737373")
-	  .text(function(d) { return d; })
-	  ;
+	.data(LegendOptions)
+	.enter()
+	.append("text")
+	.attr("id",function(){
+		count++;
+		return count;
+	})
+	.on('click', function (d){
+		d3.select('#polygon' + this.id).style("opacity", 0);
+		d3.select('#colour' + this.id).style('opacity', 0)
+	})
+	.on('dblclick', function(d){
+		d3.select('#polygon' + this.id).style("opacity", 1);
+		d3.select('#colour' + this.id).style('opacity', 1)
+	})
+	.attr("x", w - 52)
+	.attr("y", function(d, i){ return i * 20 + 9;})
+	.attr("font-size", "11px")
+	.attr("fill", "#737373")
+	.text(function(d) { return d; })
+	;
