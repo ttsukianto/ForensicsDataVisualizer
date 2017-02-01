@@ -1,0 +1,28 @@
+body {
+    padding: 50px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+#chart {
+    text-align: center;
+}
+
+#scatterplot {
+    text-align: center;
+}
+
+#spline {
+    text-align: center;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.dot {
+    stroke: #000;
+}
