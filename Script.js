@@ -149,3 +149,5 @@ var count = -1;
 	.attr("font-size", "11px")
 	.attr("fill", "#737373")
 	.text(function(d) { return d; })
+	;
+	.text(function(d) { return d; })
