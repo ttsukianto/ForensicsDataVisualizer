@@ -14,6 +14,16 @@ console.log(xmlDoc);
 d3.xml("data.xml", function(error, data) {
 	if (error) throw error;
 	data = [].map.call(data.querySelectorAll("Names"), function(suspect) {
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "data.xml", true);
+// send the request
+xhttp.send();
+// when the file is loaded, the following function will be called (this is asynchronous)
+xhttp.onload = function (data) {
+	var key = [];
+	var xmlDoc = this.responseXML;
+	console.log(xmlDoc);
+	data = [].map.call(xmlDoc.querySelectorAll("Names"), function(suspect) {
 		return {
 			name: suspect.querySelector("name").textContent
 		}
@@ -45,6 +55,7 @@ d3.xml("data.xml", function(error, data) {
 	};
 });
 
+};
 var RadarChart = {
 	draw: function(id, d, options){
 		var cfg = {

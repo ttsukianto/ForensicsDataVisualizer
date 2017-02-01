@@ -13,6 +13,10 @@ body {
     text-align: center;
 }
 
+#spline {
+    text-align: center;
+}
+
 .axis path, .axis line {
     fill: none;
     stroke: #000;

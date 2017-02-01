@@ -150,3 +150,4 @@ var count = -1;
 	.attr("fill", "#737373")
 	.text(function(d) { return d; })
 	;
+	.text(function(d) { return d; })

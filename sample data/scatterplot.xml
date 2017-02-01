@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<data>
-  <suspect id="Suspect A"><suspectMaleProbability>67</suspectMaleProbability></suspect>
-  <suspect id="Suspect B"><suspectMaleProbability>37</suspectMaleProbability></suspect>
-  <suspect id="Suspect C"><suspectMaleProbability>10</suspectMaleProbability></suspect>
-  <suspect id="Suspect D"><suspectMaleProbability>71</suspectMaleProbability></suspect>
-  <suspect id="Author"><suspectMaleProbability>72</suspectMaleProbability></suspect>
-</data>
