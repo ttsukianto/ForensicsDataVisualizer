@@ -8,16 +8,12 @@
 //For a bit of extra information check the blog about it:
 //http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
 //start of Actual chart
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "data.xml", true);
-// send the request
-xhttp.send();
-// when the file is loaded, the following function will be called (this is asynchronous)
-xhttp.onload = function (data) {
-	var key = [];
-	var xmlDoc = this.responseXML;
-	console.log(xmlDoc);
-	data = [].map.call(xmlDoc.querySelectorAll("Names"), function(suspect) {
+var key = [];
+var xmlDoc = this.responseXML;
+console.log(xmlDoc);
+d3.xml("data.xml", function(error, data) {
+	if (error) throw error;
+	data = [].map.call(data.querySelectorAll("Names"), function(suspect) {
 		return {
 			name: suspect.querySelector("name").textContent
 		}
@@ -27,6 +23,7 @@ xhttp.onload = function (data) {
 		key = Object.values(data[y]);
 		LegendOptions[y] = key[0];
 	};
+});
 
 var str1 = [null,null,null];
 var cntr = 0;
@@ -47,7 +44,7 @@ d3.xml("data.xml", function(error, data) {
 		d[y] = str1;
 	};
 });
-};
+
 var RadarChart = {
 	draw: function(id, d, options){
 		var cfg = {
@@ -258,4 +255,4 @@ d.forEach(function(y, x){
 	.style('font-family', 'sans-serif')
 	.style('font-size', '13px');
 }
-};
+}
