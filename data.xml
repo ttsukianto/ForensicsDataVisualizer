@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--'values should not surpass 1 and are treated as percentages. ex: 1 is 100% and .37 is 37%'-->
+<!--'features should be added in the order that the names are. For example all the feature 1's should come after the previouse person's feature 4.-->
 <suspects>
-    <element id='Hand Writing'><value>.01</value></element>
-    <element id='Looks Like'><value>.02</value></element>
-    <element id='The A looks the same'><value>.03</value></element>
-    <element id='Hand Writing'><value>.04</value></element>
-    <element id='Looks Like'><value>.05</value></element>
-    <element id='The A looks the same'><value>.06</value></element>
-    <element id='Hand Writing'><value>.95</value></element>
-    <element id='Looks Like'><value>.08</value></element>
-    <element id='The A looks the same'><value>.09</value></element>
-    <element id='Hand Writing'><value>.10</value></element>
-    <element id='Looks Like'><value>.11</value></element>
-    <element id='The A looks the same'><value>.12</value></element>
+    <element id='Feature 1'><value>.05</value></element>
+    <element id='Feature 2'><value>.1</value></element>
+    <element id='Feature 3'><value>.15</value></element>
+    <element id='Feature 4'><value>.2</value></element>
+    <element id='Feature 1'><value>.25</value></element>
+    <element id='Feature 2'><value>.3</value></element>
+    <element id='Feature 3'><value>.35</value></element>
+    <element id='Feature 4'><value>.4</value></element>
+    <element id='Feature 1'><value>.45</value></element>
+    <element id='Feature 2'><value>.5</value></element>
+    <element id='Feature 3'><value>.55</value></element>
+    <element id='Feature 4'><value>.6</value></element>
+    <element id='Feature 1'><value>.65</value></element>
+    <element id='Feature 2'><value>.7</value></element>
+    <element id='Feature 3'><value>.75</value></element>
+    <element id='Feature 4'><value>.8</value></element>
+    <element id='Feature 1'><value>.85</value></element>
+    <element id='Feature 2'><value>.9</value></element>
+    <element id='Feature 3'><value>.95</value></element>
+    <element id='Feature 4'><value>1</value></element>
+    <element id='Feature 1'><value>.38</value></element>
+    <element id='Feature 2'><value>.81</value></element>
+    <element id='Feature 3'><value>.05</value></element>
+    <element id='Feature 4'><value>.48</value></element>
+<!--'Names should go in the order that the features above are in. In the already supplied code the first 4 features correspond to Harold'-->
     <Names><name>Harold</name></Names>
     <Names><name>Susan</name></Names>
     <Names><name>Amber</name></Names>
     <Names><name>Colton</name></Names>
+    <Names><name>Ian</name></Names>
+    <Names><name>Poison</name></Names>
 </suspects>

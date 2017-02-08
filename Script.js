@@ -1,72 +1,8 @@
 var w = 500,
 h = 500;
-var d = [
-[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4}
-			],[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4}
+var d = [];
 
-			],[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4}
-			],[
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4}
-			]
-
-];
-
-var LegendOptions = [];
+var LegendOptions = ["Harold","Susan","Amber","Colton","Ian","Luke"];
 
 var colorscale = d3.scale.category10();
 
@@ -78,7 +14,6 @@ var mycfg = {
 	levels: 10,
 	ExtraWidthX: 300
 }
-
 //Call function to draw the Radar chart
 //Will expect that data is in %'s
 RadarChart.draw("#chart", d, mycfg);
@@ -86,7 +21,7 @@ RadarChart.draw("#chart", d, mycfg);
 ////////////////////////////////////////////
 /////////// Initiate legend ////////////////
 ////////////////////////////////////////////
-
+dataLoaded.then(function() {
 var svg = d3.select('#body')
 .selectAll('svg')
 .append('svg')
@@ -101,7 +36,7 @@ var text = svg.append("text")
 .attr("y", 10)
 .attr("font-size", "12px")
 .attr("fill", "#404040")
-.text("Suspects");
+.text("Suspects (click or double click on the names)");
 
 //Initiate Legend	
 var legend = svg.append("g")
@@ -112,6 +47,7 @@ var legend = svg.append("g")
 ;
 var count = -1;
 	//Create colour squares
+	console.log(LegendOptions.length);
 	legend.selectAll('rect')
 	.data(LegendOptions)
 	.enter()
@@ -128,6 +64,8 @@ var count = -1;
 	;
 	count = -1;
 	//Create text next to squares
+	console.log(LegendOptions.length);
+	console.log(Array.isArray(LegendOptions));
 	legend.selectAll('text')
 	.data(LegendOptions)
 	.enter()
@@ -150,4 +88,4 @@ var count = -1;
 	.attr("fill", "#737373")
 	.text(function(d) { return d; })
 	;
-	.text(function(d) { return d; })
+});

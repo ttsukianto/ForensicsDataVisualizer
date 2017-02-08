@@ -8,56 +8,54 @@
 //For a bit of extra information check the blog about it:
 //http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
 //start of Actual chart
-var key = [];
-var xmlDoc = this.responseXML;
-console.log(xmlDoc);
-d3.xml("data.xml", function(error, data) {
-	if (error) throw error;
-	data = [].map.call(data.querySelectorAll("Names"), function(suspect) {
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "data.xml", true);
-// send the request
-xhttp.send();
-// when the file is loaded, the following function will be called (this is asynchronous)
-xhttp.onload = function (data) {
-	var key = [];
-	var xmlDoc = this.responseXML;
-	console.log(xmlDoc);
-	data = [].map.call(xmlDoc.querySelectorAll("Names"), function(suspect) {
-		return {
-			name: suspect.querySelector("name").textContent
-		}
-	});
-	console.log(data);
-	for (var y = 0; y < data.length; y++) {
-		key = Object.values(data[y]);
-		LegendOptions[y] = key[0];
-	};
+var dataLoaded = new Promise(function(resolve, reject) {
+    $(document).ready(function() {
+        var tdata = [];
+        var cntr = 0;
+        var cntr2 = 0;
+        var str1 = [null,null,null];
+        d3.xml("data.xml", function(error, data) {
+            if (error) {
+                reject(error);
+            }
+            //
+            [].map.call(data.querySelectorAll("Names"), function(suspect) {
+                return {
+                    name: suspect.querySelector("name").textContent
+                }
+            }).forEach(function(item) {
+                var key = Object.values(item);
+                LegendOptions[cntr] = key[0];
+                cntr++;
+            });
+            //
+            var tdata = [].map.call(data.querySelectorAll("element"), function(suspect) {
+                return {
+                    axis: suspect.getAttribute("id"),
+                    value: +suspect.querySelector("value").textContent
+                }
+            });
+            cntr = 0;
+            console.log(LegendOptions);
+            LegendOptions.forEach(function() {
+                str1 = [null, null, null];
+                for (var i = 0; i < tdata.length / LegendOptions.length; i++) {
+                    str1[i] = tdata[cntr];
+                    cntr++;
+                };
+                console.log(str1);
+                d[cntr2] = str1;
+                cntr2++;
+            });
+            //
+            resolve(d);
+            resolve(LegendOptions);
+        });
+    });
 });
-
-var str1 = [null,null,null];
-var cntr = 0;
-d3.xml("data.xml", function(error, data) {
-	if (error) throw error;
-	data = [].map.call(data.querySelectorAll("element"), function(suspect) {
-		return {
-			axis: suspect.getAttribute("id"),
-			value: +suspect.querySelector("value").textContent
-		}
-	});
-	for (var y = 0; y < LegendOptions.length; y++) {
-		str1 = [null,null,null]
-		for (var i = 0; i < data.length/LegendOptions.length; i++) {
-			str1[i] = data[cntr];
-			cntr++;
-		};
-		d[y] = str1;
-	};
-});
-
-};
 var RadarChart = {
 	draw: function(id, d, options){
+		dataLoaded.then(function() {
 		var cfg = {
 			radius: 5,
 			w: 600,
@@ -84,7 +82,6 @@ var RadarChart = {
 			}
 		}
 		cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
-		console.log(d);
 		var allAxis = (d[0].map(function(i, j){return i.axis}));
 		var total = allAxis.length;
 		var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
@@ -265,5 +262,6 @@ d.forEach(function(y, x){
 	.style('opacity', 0)
 	.style('font-family', 'sans-serif')
 	.style('font-size', '13px');
+});
 }
 }
